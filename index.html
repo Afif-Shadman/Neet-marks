@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>HTML</title>
+  
+  <!-- HTML -->
+  
+
+  <!-- Custom Styles -->
+  <style type="text/css" media="all">
+    
+.parent {
+    height: 1000px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+}
+    
+#wrong {
+    background-color: darkred;
+    color: red;
+}
+
+#right {
+
+    background-color: darkgreen;
+    color: greenyellow;
+}
+    
+#left {
+    background-color: lemonchiffon;
+    color: yellow;
+}    
+
+
+.parent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 0px;
+}
+    
+#marks {
+    grid-column: span 3 / span 3;
+    grid-row: span 5 / span 5;
+}
+
+#left {
+    grid-row: span 5 / span 5;
+    grid-row-start: 6;
+}
+
+#right {
+    grid-row: span 5 / span 5;
+    grid-row-start: 6;
+}
+
+#wrong {
+    grid-row: span 5 / span 5;
+    grid-row-start: 6;
+}
+        
+  </style>
+</head>
+
+<body>
+
+<div class="parent">
+    <h1 id="marks"></h1>
+    <button id="wrong">Wrong</button>
+    <button id="left">Left</button>
+    <button id="right">Right</button>
+</div>
+    
+  <script>
+    marks = 0
+r = 0
+w = 0
+l = 0
+total= 0
+const wrong= document.getElementById('wrong');
+    //Add on click listener for button
+    wrong.addEventListener('click', function() {
+        marks = marks - 1
+        w = w + 1
+        total = (r+l+w)*4
+        document.getElementById('marks').innerText = 'Total Questions :- ' + (r+l+w)+'\n' + 'Right :- ' + r + '\nWrong :- ' + w + '\nLeft :- ' + l + '\nMarks :- ' + marks + '\nTotal :- ' + total + '\nPercentage :- ' + 
+        (((marks)/((r+l+w)*4))*100) + '%'
+    })
+    
+    const right = document.getElementById('right');
+    //Add on click listener for button
+    right.addEventListener('click', function() {
+        r = r + 1
+        marks = marks + 4
+        total = (r + l + w) * 4
+document.getElementById('marks').innerText = 'Total Questions :- ' + (r + l + w) + '\n' + 'Right :- ' + r + '\nWrong :- ' + w + '\nLeft :- ' + l + '\nMarks :- ' + marks + '\nTotal :- ' + total + '\nPercentage :- ' +
+    (((marks) / ((r + l + w) * 4)) * 100) + '%'
+})
+    
+    const left = document.getElementById('left');
+//Add on click listener for button
+left.addEventListener('click', function() {
+    l = l + 1
+    total = (r + l + w) * 4
+document.getElementById('marks').innerText = 'Total Questions :- ' + (r + l + w) + '\n' + 'Right :- ' + r + '\nWrong :- ' + w + '\nLeft :- ' + l + '\nMarks :- ' + marks + '\nTotal :- ' + total + '\nPercentage :- ' +
+    (((marks) / ((r + l + w) * 4)) * 100) + '%'
+})
+  </script>
+</body>
+</html>
